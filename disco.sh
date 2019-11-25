@@ -1,6 +1,6 @@
 #!/bin/bash
 while true; do  
-  battery_level=`acpi -b | grep -P -o '[0-9]+(?=%)'`
+  battery_level=`acpi -b | grep -P -o -m 1 '[0-9]+(?=%)'`
   status=$(cat /sys/class/power_supply/AC/online)
   if [ $battery_level -le 20 ] && [ $status == "0" ]
     then
